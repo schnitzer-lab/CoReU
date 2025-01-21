@@ -1,10 +1,10 @@
 
 %%
 
-function [w,Wall] = estimateFilterReg(x1, x2, dn, dn_overlap, varargin)
+function [w,Wall] = estimateFilterReg(x1, x2, wn, dn, varargin)
 %     if(isempty(oneway)) oneway = false; end
         
-    if(mod(dn,2)) dn = dn+1; end
+    if(mod(wn,2)) wn = wn+1; end
     
     options = defaultOptions();
     if(~isempty(varargin))
@@ -13,17 +13,17 @@ function [w,Wall] = estimateFilterReg(x1, x2, dn, dn_overlap, varargin)
     
     if(isfinite(options.max_delay))
         options.max_phase = ...
-            min([linspace(0, options.max_delay*pi, dn/2), pi, ...
-                 linspace(options.max_delay*pi, 0, dn/2) ], ...
+            min([linspace(0, options.max_delay*pi, wn/2), pi, ...
+                 linspace(options.max_delay*pi, 0, wn/2) ], ...
                 options.max_phase)';
         options.max_phase(options.max_phase>pi) = pi;
     end
     
     nt = length(x1);
-    L = dn + 1;
+    L = wn + 1;
     T = [-(L/2+1):1:(L/2-2)];
     W = hann(L);
-    nsteps =  1:dn_overlap:(nt-dn) ;
+    nsteps =  1:dn:(nt-wn) ;
     Wall = nan([L, length(nsteps)]);
     
     fs = ifftshift(linspace(0,1,L)-1/2); 
@@ -32,8 +32,8 @@ function [w,Wall] = estimateFilterReg(x1, x2, dn, dn_overlap, varargin)
     U2fall = nan([L, length(nsteps)]);
     for i_n = 1:length(nsteps)
         n0 = nsteps(i_n);
-        uz1 = x1(n0:(n0+dn));
-        uz2 = x2(n0:(n0+dn));
+        uz1 = x1(n0:(n0+wn));
+        uz2 = x2(n0:(n0+wn));
                 
         U1fall(:, i_n) = fft(W.*uz1,L); 
         U2fall(:, i_n) = fft(W.*uz2,L);
