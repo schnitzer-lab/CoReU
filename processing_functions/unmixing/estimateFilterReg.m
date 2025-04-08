@@ -3,17 +3,18 @@
 
 function w = estimateFilterReg(x1, x2, wn, dn, eps, noise_levels)
       
-    if(mod(wn,2) == 0), wn = wn+1; end
     if(nargin < 5), eps = 1; end
-    if(nargin < 6), noise_levels = []; end
-
+    if(nargin < 6), noise_levels = []; end    
+    
     if(length(wn) > 1)
         W = wn;
         wn = length(wn);
     else
+        % if(mod(wn,2) == 0), wn = wn+1; end
         W = hann(wn);
     end
-    
+
+
     nt = length(x1);
         
     indxs = (1:dn:(nt-wn)) + (0:(wn-1))';
