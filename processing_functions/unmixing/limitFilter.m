@@ -43,7 +43,7 @@ function w = limitFilter(w, varargin)
         exp(-1.i*options.max_phase(phase_too_large_n));
 %     s(phase_too_large) = 0;
 
-    w = fftshift(real(ifft(s)));
+    w = real(fftshift(ifft(s)));
 end
 
 function options = defaultOptions()
