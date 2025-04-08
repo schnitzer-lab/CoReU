@@ -42,7 +42,7 @@ function w = estimateFilterReg(x1, x2, wn, dn, varargin)
     % s2 = u11f./(u12f+options.eps*mean(abs(u12f)));
     s = s1;
 
-    w = fftshift(ifft(s));
+    w = real(fftshift(ifft(s)));
 end
 
 function options = defaultOptions()
