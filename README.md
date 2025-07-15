@@ -8,4 +8,4 @@ Convolutional unmixing of reference channel for optical imaging
 
 ## Citations
 
-This full processing pipeline is described in **upcoming biorxiv link** [Haziza et al., 2024](https://www.biorxiv.org/). The convolutional unmixing procedure was first introduced in a talk [Kruzhilin et al., 2023](https://www.sfn.org/-/media/SfN/Documents/NEW-SfN/Meetings/Neuroscience-2023/Abstracts/Abstract-PDFs/SFN23_Abstracts-PDF-Nano.pdf). Please cite us if you use this pipeline in your own work.
+This full processing pipeline is described in [Haziza et al., 2025](https://www.biorxiv.org/). The convolutional unmixing procedure was first introduced in a talk [Kruzhilin et al., 2023](https://www.sfn.org/-/media/SfN/Documents/NEW-SfN/Meetings/Neuroscience-2023/Abstracts/Abstract-PDFs/SFN23_Abstracts-PDF-Nano.pdf). Please cite us if you use this method in your work.
